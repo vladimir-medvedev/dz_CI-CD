@@ -33,8 +33,7 @@ https://github.com/vladimir-medvedev/dz_netology/blob/main/README.md
 Сделайте коммит и пуш.
 В качестве ответа добавьте ссылку на этот коммит в ваш md-файл с решением.
 
-https://github.com/vladimir-medvedev/dz_netology/commit/9f71ca841fbee434b14e32fc4c87238cde61e825
-
+https://github.com/vladimir-medvedev/dz_netology/commit/167f4f9f2580b619d92baf4d95a9a85855d13304
 ### Задание 3
 
 
