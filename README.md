@@ -20,7 +20,7 @@ Eщё раз выполните git status и продолжайте прове�
 Сделайте git push origin master.
 В качестве ответа добавьте ссылку на этот коммит в ваш md-файл с решением.
 
-`https://github.com/vladimir-medvedev/dz_netology/blob/main/README.md`
+https://github.com/vladimir-medvedev/dz_netology/blob/main/README.md
 
 
 ### Задание 2
@@ -33,7 +33,7 @@ Eщё раз выполните git status и продолжайте прове�
 Сделайте коммит и пуш.
 В качестве ответа добавьте ссылку на этот коммит в ваш md-файл с решением.
 
-`https://github.com/vladimir-medvedev/dz_netology/commit/9f71ca841fbee434b14e32fc4c87238cde61e825`
+https://github.com/vladimir-medvedev/dz_netology/commit/9f71ca841fbee434b14e32fc4c87238cde61e825
 
 ### Задание 3
 
@@ -50,4 +50,4 @@ Eщё раз выполните git status и продолжайте прове�
 Не удаляйте ветку dev.
 В качестве ответа прикрепите ссылку на граф коммитов https://github.com/ваш-логин/ваш-репозиторий/network в ваш md-файл с решением.
 
-`https://github.com/vladimir-medvedev/dz_netology/network`
+https://github.com/vladimir-medvedev/dz_netology/network
