@@ -10,6 +10,8 @@
 Используя свой аккаунт на GitHub, сделайте себе форк репозитория. В этом же репозитории находится дополнительный материал для выполнения ДЗ.
 Создайте в jenkins Freestyle Project, подключите получившийся репозиторий к нему и произведите запуск тестов и сборку проекта go test . и docker build ..
 ![alt text](https://github.com/vladimir-medvedev/dz_CI-CD/blob/main/1.png)
+![alt text](https://github.com/vladimir-medvedev/dz_CI-CD/blob/main/2.png)
+![alt text](https://github.com/vladimir-medvedev/dz_CI-CD/blob/main/3.png)
 
 ### Задание 2
 
