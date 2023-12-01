@@ -10,8 +10,8 @@
 Необходимо аналогично настроить отслеживание состояния интерфейсов Gi0/0 (для первой группы).
 Для проверки корректности настройки, разорвите один из кабелей между одним из маршрутизаторов и Switch0 и запустите ping между PC0 и Server0.
 На проверку отправьте получившуюся схему в формате pkt и скриншот, где виден процесс настройки маршрутизатора.
-![alt text](https://github.com/vladimir-medvedev/dz_CI-CD/blob/main/HSRP Router 1.png)
-![alt text](https://github.com/vladimir-medvedev/dz_CI-CD/blob/main/HSRP Router 2.png)
+![alt text](https://github.com/vladimir-medvedev/dz_CI-CD/blob/main/HSRP_Router_1.png)
+![alt text](https://github.com/vladimir-medvedev/dz_CI-CD/blob/main/HSRP_Router_2.png)
 
 ### Задание 2
 
