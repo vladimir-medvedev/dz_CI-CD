@@ -4,16 +4,21 @@
 ### Задание 1
 
 #Что нужно сделать:
-Разверните GitLab локально, используя Vagrantfile и инструкцию, описанные в этом репозитории.
-Создайте новый проект и пустой репозиторий в нём.
-Зарегистрируйте gitlab-runner для этого проекта и запустите его в режиме Docker. Раннер можно регистрировать и запускать на той же виртуальной машине, на которой запущен GitLab.
-![alt text](https://github.com/vladimir-medvedev/dz_Gitlab/blob/main/GitLab.png)
+Запустите два simple python сервера на своей виртуальной машине на разных портах
+Установите и настройте HAProxy
+Настройте балансировку Round-robin на 4 уровне.
+На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy.
+![alt text](https://github.com/vladimir-medvedev/dz_Gitlab/blob/main/HAP1.1.png)
+![alt text](https://github.com/vladimir-medvedev/dz_Gitlab/blob/main/HAP1.1.txt)
+
 
 ### Задание 2
 
 #Что нужно сделать:
 
-Запушьте репозиторий на GitLab, изменив origin. Это изучалось на занятии по Git.
-Создайте .gitlab-ci.yml, описав в нём все необходимые, на ваш взгляд, этапы.
+Запустите три simple python сервера на своей виртуальной машине на разных портах
+Настройте балансировку Weighted Round Robin на 7 уровне, чтобы первый сервер имел вес 2, второй - 3, а третий - 4
+HAproxy должен балансировать только тот http-трафик, который адресован домену example.local
+На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy c использованием домена example.local и без него.
 ![alt text](https://github.com/vladimir-medvedev/dz_Gitlab/blob/main/Pipeline.png)
 ![alt text](https://github.com/vladimir-medvedev/dz_Gitlab/blob/main/gitlab-ci.png)
