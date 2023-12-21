@@ -1,4 +1,4 @@
- Домашнее задание к занятию "Disaster recovery и Keepalived" - Медведев Владимир
+ Домашнее задание к занятию "HAProxy" - Медведев Владимир
 
 
 ### Задание 1
@@ -9,6 +9,7 @@
 Настройте балансировку Round-robin на 4 уровне.
 На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy.
 ![alt text](https://github.com/vladimir-medvedev/dz_Gitlab/blob/main/HAP1.1.png)
+![alt text](https://github.com/vladimir-medvedev/dz_Gitlab/blob/main/HAP1.2.png)
 ![alt text](https://github.com/vladimir-medvedev/dz_Gitlab/blob/main/HAP1.1.txt)
 
 
