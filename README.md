@@ -10,7 +10,6 @@
 На проверку направьте конфигурационный файл haproxy, скриншоты, где видно перенаправление запросов на разные серверы при обращении к HAProxy.
 ![alt text](https://github.com/vladimir-medvedev/dz_Gitlab/blob/main/HAP1.1.png)
 ![alt text](https://github.com/vladimir-medvedev/dz_Gitlab/blob/main/HAP1.2.png)
-![alt text](https://github.com/vladimir-medvedev/dz_Gitlab/blob/main/HAP1.1.txt)
 
 
 ### Задание 2
