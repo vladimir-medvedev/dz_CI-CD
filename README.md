@@ -4,29 +4,23 @@
 ### Задание 1
 
 #Что нужно сделать:
-Приведите примеры проблем, которые может решить кеширование.
+Установите и запустите Elasticsearch, после чего поменяйте параметр cluster_name на случайный.
 
-1. Повышение производительности;
-2. Увеличение скорости ответа;
-3. Экономия ресурсов базы данных;
-4. Сглаживание бустов трафика.
-
+![alt text](https://github.com/vladimir-medvedev/dz_ELK/blob/main/Elasticsearch.png)
 ### Задание 2
 
 #Что нужно сделать:
-Установите и запустите memcached.
-![alt text](https://github.com/vladimir-medvedev/dz_Redis-memcahed/blob/main/mem.png)
+Установите и запустите Kibana.
+![alt text](https://github.com/vladimir-medvedev/dz_ELK/blob/main/Kibana.png)
 
 ### Задание 3
 
-Запишите в memcached несколько ключей с любыми именами и значениями, для которых выставлен TTL 5.
+Установите и запустите Logstash и Nginx. С помощью Logstash отправьте access-лог Nginx в Elasticsearch.
 
-![alt text](https://github.com/vladimir-medvedev/dz_Redis-memcahed/blob/main/mem1.png)
-
+![alt text](https://github.com/vladimir-medvedev/dz_ELK/blob/main/Logstash.png)
 
 ### Задание 4
 
-Запишите в Redis несколько ключей с любыми именами и значениями.
+Установите и запустите Filebeat. Переключите поставку логов Nginx с Logstash на Filebeat.
 
-![alt text](https://github.com/vladimir-medvedev/dz_Redis-memcahed/blob/main/Redis.png)
-![alt text](https://github.com/vladimir-medvedev/dz_Redis-memcahed/blob/main/Redis1.png)
+![alt text](https://github.com/vladimir-medvedev/dz_ELK/blob/main/Filebeat.png)
