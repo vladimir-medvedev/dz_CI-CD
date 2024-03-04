@@ -4,20 +4,64 @@
 ### Задание 1
 
 #Что нужно сделать:
-Установка RabbitMQ
-![alt text](https://github.com/vladimir-medvedev/dz_ELK/blob/main/Rabbit.png)
-### Задание 2
+Опишите не менее семи таблиц, из которых состоит база данных:
 
-#Что нужно сделать:
-Отправка и получение сообщений
-![alt text](https://github.com/vladimir-medvedev/dz_ELK/blob/main/Rabbit1.png)
-![alt text](https://github.com/vladimir-medvedev/dz_ELK/blob/main/Rabbit2.png)
+какие данные хранятся в этих таблицах;
+какой тип данных у столбцов в этих таблицах, если данные хранятся в PostgreSQL.
+Приведите решение к следующему виду:
 
-### Задание 3
+Сотрудники (
 
-Подготовка HA кластера
+идентификатор, первичный ключ, serial,
+фамилия varchar(50),
+...
+идентификатор структурного подразделения, внешний ключ, integer).
 
-![alt text](https://github.com/vladimir-medvedev/dz_ELK/blob/main/Rabbit3.png)
-![alt text](https://github.com/vladimir-medvedev/dz_ELK/blob/main/Rabbit4.png)
-![alt text](https://github.com/vladimir-medvedev/dz_ELK/blob/main/Rabbit5.png)
-![alt text](https://github.com/vladimir-medvedev/dz_ELK/blob/main/Rabbit6.png)
+ОТВЕТ:
+
+Типы данных:
+varchar, decimal, date, tinytext
+
+Типы данных в PostgreSQL:
+varchar, money, date, text
+
+ТАБЛИЦЫ:
+1
+Сотрудники (
+индентификатор, первичный ключ, serial,
+фамилия varchar(50),
+имя varchar(50),
+отчество varchar(50),
+идентификатор даты найма, внешний ключ, integer,
+идентификатор структурного подразделения, внешний ключ, integer).
+2
+Адрес филиала (
+индентификатор, первичный ключ, serial,
+область varchar(50),
+город varchar(50),
+улица varchar(50),
+дом varchar(50).
+3
+Проект (
+индентификатор, первичный ключ, serial,
+проект tinytext,
+идентификатор сотрудника, внешний ключ, integer,
+идентификатор должности, внешний ключ, integer,
+идентификатор оклада, внешний ключ, integer).
+4
+Дата найма(
+индентификатор, первичный ключ, serial,
+дата найма date.
+5
+Оклад (
+индентификатор, первичный ключ, serial,
+оклад decimal(8,2).
+6
+Структурное подразделение (
+индентификатор, первичный ключ, serial,
+структурное подразделение varchar(100),
+идентификатор адреса филиала, внешний ключ, integer).
+7
+Тип подразделения (
+индентификатор, первичный ключ, serial,
+тип подразделения varchar(50).
