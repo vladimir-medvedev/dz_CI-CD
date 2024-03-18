@@ -4,38 +4,58 @@
 ### Задание 1
 
 #Что нужно сделать:
-1.1. Поднимите чистый инстанс MySQL версии 8.0+. Можно использовать локальный сервер или контейнер Docker.
+Получите уникальные названия районов из таблицы с адресами, которые начинаются на “K” и заканчиваются на “a” и не содержат пробелов.
 
-1.2. Создайте учётную запись sys_temp.
-
-1.3. Выполните запрос на получение списка пользователей в базе данных. (скриншот)
-
-1.4. Дайте все права для пользователя sys_temp.
-
-1.5. Выполните запрос на получение списка прав для пользователя sys_temp. (скриншот)
-
-1.6. Переподключитесь к базе данных от имени sys_temp.
-
-Для смены типа аутентификации с sha2 используйте запрос:
-
-ALTER USER 'sys_test'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
-1.6. По ссылке https://downloads.mysql.com/docs/sakila-db.zip скачайте дамп базы данных.
-
-1.7. Восстановите дамп в базу данных.
-
-1.8. При работе в IDE сформируйте ER-диаграмму получившейся базы данных. При работе в командной строке используйте команду для получения всех таблиц базы данных. (скриншот)
-
-![alt text](https://github.com/vladimir-medvedev/dz_DDL-DML/blob/main/CREATE.png)
-![alt text](https://github.com/vladimir-medvedev/dz_DDL-DML/blob/main/GRANTS.png)
-![alt text](https://github.com/vladimir-medvedev/dz_DDL-DML/blob/main/Диаграмма.png)
-![alt text](https://github.com/vladimir-medvedev/dz_DDL-DML/blob/main/Диаграмма1.png)
-![alt text](https://github.com/vladimir-medvedev/dz_DDL-DML/blob/main/Диаграмма2.png)
-
+select distinct  district 
+from address
+where district like "K%a" and district not like "% %"
 
 ### Задание 2
 
 #Что нужно сделать:
+Получите из таблицы платежей за прокат фильмов информацию по платежам, которые выполнялись в промежуток с 15 июня 2005 года по 18 июня 2005 года включительно и стоимость которых превышает 10.00.
 
-Составьте таблицу, используя любой текстовый редактор или Excel, в которой должно быть два столбца: в первом должны быть названия таблиц восстановленной базы, во втором названия первичных ключей этих таблиц. 
-![alt text](https://github.com/vladimir-medvedev/dz_DDL-DML/blob/main/Таблица.png)
+select amount
+from  payment
+where  date(payment_date) between  '2005-06-15 00:00:00' and  '2006-06-18 23:59:59' and amount > 10
 
+### Задание 3
+
+#Что нужно сделать:
+Получите последние пять аренд фильмов.
+
+select rental_date 
+from rental 
+order by rental_date desc 
+limit 5
+
+### Задание 4
+
+#Что нужно сделать:
+Одним запросом получите активных покупателей, имена которых Kelly или Willie.
+
+Сформируйте вывод в результат таким образом:
+
+a)все буквы в фамилии и имени из верхнего регистра переведите в нижний регистр,
+b)замените буквы 'll' в именах на 'pp'.
+
+select  replace (lower(first_name), 'll', 'pp') 
+from customer 
+where first_name like "Willie" 
+
+### Задание 5
+
+#Что нужно сделать:
+Выведите Email каждого покупателя, разделив значение Email на две отдельных колонки: в первой колонке должно быть значение, указанное до @, во второй — значение, указанное после @.
+
+select substring_index(email, '@', '1'), substring_index(email, '@', '-1')
+from customer 
+
+### Задание 6
+
+#Что нужно сделать:
+
+Доработайте запрос из предыдущего задания, скорректируйте значения в новых колонках: первая буква должна быть заглавной, остальные — строчными.
+
+select concat(upper(left(substring_index(email, '@', '1'), 1)), lower(substring(substring_index(email, '@', '1'), 2))), concat(upper(left(substring_index(email, '@', '-1'), 1)), lower(substring(substring_index(email, '@', '-1'), 2)))
+from customer
