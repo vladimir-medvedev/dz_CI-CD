@@ -6,28 +6,35 @@
 #Что нужно сделать:
 Получите уникальные названия районов из таблицы с адресами, которые начинаются на “K” и заканчиваются на “a” и не содержат пробелов.
 
-select distinct  district 
-from address
-where district like "K%a" and district not like "% %"
+select distinct  district ;
+
+from address;
+
+where district like "K%a" and district not like "% %";
 
 ### Задание 2
 
 #Что нужно сделать:
 Получите из таблицы платежей за прокат фильмов информацию по платежам, которые выполнялись в промежуток с 15 июня 2005 года по 18 июня 2005 года включительно и стоимость которых превышает 10.00.
 
-select amount
-from  payment
-where  date(payment_date) between  '2005-06-15 00:00:00' and  '2006-06-18 23:59:59' and amount > 10
+select amount;
+
+from  payment;
+
+where  date(payment_date) between  '2005-06-15 00:00:00' and  '2006-06-18 23:59:59' and amount > 10;
 
 ### Задание 3
 
 #Что нужно сделать:
 Получите последние пять аренд фильмов.
 
-select rental_date 
-from rental 
-order by rental_date desc 
-limit 5
+select rental_date;
+
+from rental; 
+
+order by rental_date desc;
+
+limit 5;
 
 ### Задание 4
 
@@ -39,17 +46,20 @@ limit 5
 a)все буквы в фамилии и имени из верхнего регистра переведите в нижний регистр,
 b)замените буквы 'll' в именах на 'pp'.
 
-select  replace (lower(first_name), 'll', 'pp') 
-from customer 
-where first_name like "Willie" 
+select  replace (lower(first_name), 'll', 'pp');
+
+from customer; 
+
+where first_name like "Willie";
 
 ### Задание 5
 
 #Что нужно сделать:
 Выведите Email каждого покупателя, разделив значение Email на две отдельных колонки: в первой колонке должно быть значение, указанное до @, во второй — значение, указанное после @.
 
-select substring_index(email, '@', '1'), substring_index(email, '@', '-1')
-from customer 
+select substring_index(email, '@', '1'), substring_index(email, '@', '-1');
+
+from customer;
 
 ### Задание 6
 
@@ -57,5 +67,6 @@ from customer
 
 Доработайте запрос из предыдущего задания, скорректируйте значения в новых колонках: первая буква должна быть заглавной, остальные — строчными.
 
-select concat(upper(left(substring_index(email, '@', '1'), 1)), lower(substring(substring_index(email, '@', '1'), 2))), concat(upper(left(substring_index(email, '@', '-1'), 1)), lower(substring(substring_index(email, '@', '-1'), 2)))
-from customer
+select concat(upper(left(substring_index(email, '@', '1'), 1)), lower(substring(substring_index(email, '@', '1'), 2))), concat(upper(left(substring_index(email, '@', '-1'), 1)), lower(substring(substring_index(email, '@', '-1'), 2)));
+
+from customer;
