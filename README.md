@@ -4,69 +4,96 @@
 ### Задание 1
 
 #Что нужно сделать:
-Получите уникальные названия районов из таблицы с адресами, которые начинаются на “K” и заканчиваются на “a” и не содержат пробелов.
+Одним запросом получите информацию о магазине, в котором обслуживается более 300 покупателей, и выведите в результат следующую информацию:
 
-select distinct  district ;
+фамилия и имя сотрудника из этого магазина;
 
-from address;
+город нахождения магазина;
 
-where district like "K%a" and district not like "% %";
+количество пользователей, закреплённых в этом магазине.
+
+
+select CONCAT(s2.last_name, ' ', s2.first_name), c.city, count(c2.store_id)  
+
+from store s 
+
+join staff s2 on s.manager_staff_id = s2.staff_id
+
+join address a on s.address_id  = a.address_id 
+
+join city c on a.city_id = c.city_id  
+
+join customer c2 on s.store_id = c2.store_id 
+
+group by c2.store_id 
+
+having  count(c2.store_id) > 300
 
 ### Задание 2
 
 #Что нужно сделать:
-Получите из таблицы платежей за прокат фильмов информацию по платежам, которые выполнялись в промежуток с 15 июня 2005 года по 18 июня 2005 года включительно и стоимость которых превышает 10.00.
+Получите количество фильмов, продолжительность которых больше средней продолжительности всех фильмов.
 
-select amount;
 
-from  payment;
+select `length`, title
 
-where  date(payment_date) between  '2005-06-15 00:00:00' and  '2006-06-18 23:59:59' and amount > 10;
+from film f 
+
+group by film_id 
+
+having `length` > (select avg(`length`) from film f)
 
 ### Задание 3
 
 #Что нужно сделать:
-Получите последние пять аренд фильмов.
+Получите информацию, за какой месяц была получена наибольшая сумма платежей, и добавьте информацию по количеству аренд за этот месяц.
 
-select rental_date;
+select month(p.payment_date), sum(p.amount) SumAmount, count(r.rental_id)
 
-from rental; 
+from payment p
 
-order by rental_date desc;
+join rental r on p.rental_id = r.rental_id
 
-limit 5;
+group by month(p.payment_date)#, month(r.rental_date)
+
+order by SumAmount desc 
+
+limit 1
+
 
 ### Задание 4
 
 #Что нужно сделать:
-Одним запросом получите активных покупателей, имена которых Kelly или Willie.
+Посчитайте количество продаж, выполненных каждым продавцом. Добавьте вычисляемую колонку «Премия». Если количество продаж превышает 8000, то значение в колонке будет «Да», иначе должно быть значение «Нет».
 
-Сформируйте вывод в результат таким образом:
+select CONCAT(s.last_name, ' ', s.first_name), count(payment_id), 
 
-a)все буквы в фамилии и имени из верхнего регистра переведите в нижний регистр,
-b)замените буквы 'll' в именах на 'pp'.
+case
 
-select  replace (lower(first_name), 'll', 'pp');
+	when count(payment_id) > 7999 then 'Да'
 
-from customer; 
+	when count(payment_id) < 8000 then 'Нет'
 
-where first_name like "Willie";
+	end as 'Премия'
+
+from payment p
+
+join staff s on p.staff_id = s.staff_id 
+
+group by p.staff_id 
+
 
 ### Задание 5
 
 #Что нужно сделать:
-Выведите Email каждого покупателя, разделив значение Email на две отдельных колонки: в первой колонке должно быть значение, указанное до @, во второй — значение, указанное после @.
+Найдите фильмы, которые ни разу не брали в аренду.
 
-select substring_index(email, '@', '1'), substring_index(email, '@', '-1');
+select  f.title
 
-from customer;
+from film f
 
-### Задание 6
+left join inventory i on i.film_id = f.film_id
 
-#Что нужно сделать:
+left join rental r on r.inventory_id = i.inventory_id
 
-Доработайте запрос из предыдущего задания, скорректируйте значения в новых колонках: первая буква должна быть заглавной, остальные — строчными.
-
-select concat(upper(left(substring_index(email, '@', '1'), 1)), lower(substring(substring_index(email, '@', '1'), 2))), concat(upper(left(substring_index(email, '@', '-1'), 1)), lower(substring(substring_index(email, '@', '-1'), 2)));
-
-from customer;
+where r.rental_id is null;
