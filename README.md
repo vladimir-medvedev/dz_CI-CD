@@ -48,18 +48,17 @@ having `length` > (select avg(`length`) from film f)
 #Что нужно сделать:
 Получите информацию, за какой месяц была получена наибольшая сумма платежей, и добавьте информацию по количеству аренд за этот месяц.
 
-select month(p.payment_date), sum(p.amount) SumAmount, count(r.rental_id)
+select date_format(p.payment_date, '%m-%Y') as month_year, sum(p.amount) SumAmount, count(r.rental_id)
 
 from payment p
 
 join rental r on p.rental_id = r.rental_id
 
-group by month(p.payment_date)#, month(r.rental_date)
+group by month_year#, month(r.rental_date)
 
 order by SumAmount desc 
 
 limit 1
-
 
 ### Задание 4
 
