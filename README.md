@@ -30,9 +30,9 @@
 
 Запишите сеансы сканирования в Wireshark.
 
-![alt text](https://github.com/vladimir-medvedev/dz_bz/blob/main/sA.pcapng)
-![alt text](https://github.com/vladimir-medvedev/dz_bz/blob/main/sS.pcapng)
-![alt text](https://github.com/vladimir-medvedev/dz_bz/blob/main/sX.pcapng)
-![alt text](https://github.com/vladimir-medvedev/dz_bz/blob/main/sU.pcapng)
+https://github.com/vladimir-medvedev/dz_bz/blob/main/sA.pcapng
+https://github.com/vladimir-medvedev/dz_bz/blob/main/sS.pcapng
+https://github.com/vladimir-medvedev/dz_bz/blob/main/sX.pcapng
+https://github.com/vladimir-medvedev/dz_bz/blob/main/sU.pcapng
 
 
