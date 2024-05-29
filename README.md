@@ -31,8 +31,11 @@
 Запишите сеансы сканирования в Wireshark.
 
 https://github.com/vladimir-medvedev/dz_bz/blob/main/sA.pcapng
+
 https://github.com/vladimir-medvedev/dz_bz/blob/main/sS.pcapng
+
 https://github.com/vladimir-medvedev/dz_bz/blob/main/sX.pcapng
+
 https://github.com/vladimir-medvedev/dz_bz/blob/main/sU.pcapng
 
 
