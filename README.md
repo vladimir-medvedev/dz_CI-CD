@@ -4,53 +4,35 @@
 ### Задание 1
 
 #Что нужно сделать:
-Напишите запрос к учебной базе данных, который вернёт процентное отношение общего размера всех индексов к общему размеру всех таблиц.
+Скачайте и установите виртуальную машину Metasploitable: https://sourceforge.net/projects/metasploitable/.
 
-SELECT sum(index_length)/sum(data_length)*100
+Это типовая ОС для экспериментов в области информационной безопасности, с которой следует начать при анализе уязвимостей.
 
-FROM INFORMATION_SCHEMA.TABLES
+Просканируйте эту виртуальную машину, используя nmap.
+
+Попробуйте найти уязвимости, которым подвержена эта виртуальная машина.
+
+Сами уязвимости можно поискать на сайте https://www.exploit-db.com/.
+
+Для этого нужно в поиске ввести название сетевой службы, обнаруженной на атакуемой машине, и выбрать подходящие по версии уязвимости.
+
+![alt text](https://github.com/vladimir-medvedev/dz_bz/blob/main/Nmap1.png)
+
+Пароль и логин совпадают
+Используется HTTP, а не HTTPS
+Бэкдор vsftpd v.2.3.4
 
 ### Задание 2
 
 #Что нужно сделать:
 
-Выполните explain analyze следующего запроса:
+Проведите сканирование Metasploitable в режимах SYN, FIN, Xmas, UDP.
 
-select distinct concat(c.last_name, ' ', c.first_name), sum(p.amount) over (partition by c.customer_id, f.title)
-from payment p, rental r, customer c, inventory i, film f
-where date(p.payment_date) = '2005-07-30' and p.payment_date = r.rental_date and r.customer_id = c.customer_id and i.inventory_id = r.inventory_id
-перечислите узкие места;
-оптимизируйте запрос: внесите корректировки по использованию операторов, при необходимости добавьте индексы.
+Запишите сеансы сканирования в Wireshark.
 
-ОПТИМИЗАЦИЯ ЗАПРОСА:
+![alt text](https://github.com/vladimir-medvedev/dz_bz/blob/main/sA.pcapng)
+![alt text](https://github.com/vladimir-medvedev/dz_bz/blob/main/sS.pcapng)
+![alt text](https://github.com/vladimir-medvedev/dz_bz/blob/main/sX.pcapng)
+![alt text](https://github.com/vladimir-medvedev/dz_bz/blob/main/sU.pcapng)
 
-create index paymentdate on payment(payment_date)
-                  
-
-explain analyze
-
-select distinct concat(c.last_name, ' ', c.first_name), sum(p.amount)
-
-from payment p
-
-join customer c on p.customer_id = c.customer_id 
-
-where payment_date >= '2005-07-30' and payment_date < date_add('2005-07-30', interval 1 day) 
-
-group by p.customer_id
-
-
-РЕЗУЛЬТАТ EXPLAIN ANALYZE:
-
--> Sort with duplicate removal: `concat(c.last_name, ' ', c.first_name)`, `sum(p.amount)`  (actual time=2.84..2.87 rows=391 loops=1)
-
-    -> Table scan on <temporary>  (actual time=2.59..2.64 rows=391 loops=1)
-
-        -> Aggregate using temporary table  (actual time=2.59..2.59 rows=391 loops=1)
-
-            -> Nested loop inner join  (cost=507 rows=634) (actual time=0.0338..2.1 rows=634 loops=1)
-
-                -> Index range scan on p using paymentdate over ('2005-07-30 00:00:00' <= payment_date < '2005-07-31 00:00:00'), with index condition: ((p.payment_date >= TIMESTAMP'2005-07-30 00:00:00') and (p.payment_date < <cache>(('2005-07-30' + interval 1 day))))  (cost=286 rows=634) (actual time=0.0266..1.29 rows=634 loops=1)
-
-                -> Single-row index lookup on c using PRIMARY (customer_id=p.customer_id)  (cost=0.25 rows=1) (actual time=0.00112..0.00114 rows=1 loops=634)
 
