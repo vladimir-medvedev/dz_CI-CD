@@ -1,41 +1,24 @@
-Домашнее задание к занятию "Уязвимости и атаки на информационные системы" - Медведев Владимир
+Домашнее задание к занятию "Защита хоста" - Медведев Владимир
 
 
 ### Задание 1
 
 #Что нужно сделать:
-Скачайте и установите виртуальную машину Metasploitable: https://sourceforge.net/projects/metasploitable/.
+Установите eCryptfs.
+Добавьте пользователя cryptouser.
+Зашифруйте домашний каталог пользователя с помощью eCryptfs.
+![alt text](https://github.com/vladimir-medvedev/dz_bz/blob/main/eCryptfs.png)
 
-Это типовая ОС для экспериментов в области информационной безопасности, с которой следует начать при анализе уязвимостей.
-
-Просканируйте эту виртуальную машину, используя nmap.
-
-Попробуйте найти уязвимости, которым подвержена эта виртуальная машина.
-
-Сами уязвимости можно поискать на сайте https://www.exploit-db.com/.
-
-Для этого нужно в поиске ввести название сетевой службы, обнаруженной на атакуемой машине, и выбрать подходящие по версии уязвимости.
-
-![alt text](https://github.com/vladimir-medvedev/dz_bz/blob/main/Nmap1.png)
-
-Пароль и логин совпадают
-Используется HTTP, а не HTTPS
-Бэкдор vsftpd v.2.3.4
 
 ### Задание 2
 
 #Что нужно сделать:
 
-Проведите сканирование Metasploitable в режимах SYN, FIN, Xmas, UDP.
+Установите поддержку LUKS.
+Создайте небольшой раздел, например, 100 Мб.
+Зашифруйте созданный раздел с помощью LUKS.
 
-Запишите сеансы сканирования в Wireshark.
-
-https://github.com/vladimir-medvedev/dz_bz/blob/main/sA.pcapng
-
-https://github.com/vladimir-medvedev/dz_bz/blob/main/sS.pcapng
-
-https://github.com/vladimir-medvedev/dz_bz/blob/main/sX.pcapng
-
-https://github.com/vladimir-medvedev/dz_bz/blob/main/sU.pcapng
-
+![alt text](https://github.com/vladimir-medvedev/dz_bz/blob/main/LUKS1.png)
+![alt text](https://github.com/vladimir-medvedev/dz_bz/blob/main/LUKS2.png)
+![alt text](https://github.com/vladimir-medvedev/dz_bz/blob/main/LUKS3.png)
 
