@@ -1,12 +1,12 @@
 resource "yandex_alb_load_balancer" "balancer" {
   name        = "balancer"
-  network_id  = "enp0uigoiduvbugmt6qs"
+  network_id  = "enp3kf1i4bepemkjri5m"
   #security_group_ids = ["<список_идентификаторов_групп_безопасности>"]
 
   allocation_policy {
     location {
       zone_id   = "ru-central1-b"
-      subnet_id = "e2lptoc7b28g6dk9lkb0" 
+      subnet_id = "e2lmv72g7uvgocknu92u" 
     }
   }
 
