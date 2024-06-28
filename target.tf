@@ -3,7 +3,7 @@ resource "yandex_alb_target_group" "netology" {
 
   target {
     subnet_id    = "e9b1120d0k8i4m1nm7h9"
-    ip_address   = "192.168.10.19"
+    ip_address   = "192.168.10.15"
   }
 
   target {
