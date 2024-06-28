@@ -1,0 +1,14 @@
+---
+- name: Install Nginx
+  apt:
+    name=nginx
+    state=latest
+  notify:
+    - nginx systemd
+
+- name: nginx_conf
+  lineinfile: dest=/etc/nginx/nginx.conf
+              regexp='^access_log'
+              insertafter='^access_log'
+              line='error_log /var/log/nginx/error.log;'
+              state=present

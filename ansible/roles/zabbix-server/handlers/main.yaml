@@ -1,0 +1,5 @@
+- name: zabbix-server systemd
+  systemd:
+    name: zabbix-server
+    enabled: yes
+    state: started

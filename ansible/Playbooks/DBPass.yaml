@@ -1,0 +1,18 @@
+---
+- hosts: zabbix
+  become:
+    true
+  become_method:
+    su
+  become_user:
+    root
+  remote_user:
+    zabbix
+  tasks:
+
+    - name: DBPassword
+      lineinfile: dest=/etc/zabbix/zabbix_server.conf
+                  regexp='^# DBPassword'
+                  insertafter='# DBPassword'
+                  line='DBPassword=zb_wd'
+                  state=present

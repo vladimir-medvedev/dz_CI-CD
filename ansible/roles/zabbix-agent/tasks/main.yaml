@@ -1,0 +1,31 @@
+---
+- name: Install zabbix-agent
+  apt:
+    name=zabbix-agent
+    state=latest
+  notify:
+    - zabbix-agent systemd
+
+- name: za-server
+  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf
+              regexp='^Server=127'
+              insertafter='# Server'
+              line='Server=192.168.20.21'
+
+- name: BufferSend
+  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf
+              regexp='^# BufferSend'
+              insertafter='# BufferSend'
+              line='BufferSend=10'
+
+- name: BufferSize
+  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf
+              regexp='^# BufferSize'
+              insertafter='# BufferSize'
+              line='BufferSize=1000'
+
+- name: AllowRoot
+  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf
+              regexp='^# AllowRoot'
+              insertafter='# AllowRoot'
+              line='AllowRoot=1'

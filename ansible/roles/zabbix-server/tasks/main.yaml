@@ -1,0 +1,31 @@
+---
+- name: Update
+  apt:
+    update_cache: yes
+
+- name: Install zabbix-server
+  apt:
+    name=zabbix-server-mysql
+    state=latest
+  notify:
+    - zabbix-server systemd
+
+- name: Install frontend
+  apt:
+    name=zabbix-frontend-php
+    state=latest
+
+- name: Install apache
+  apt:
+    name=zabbix-apache-conf
+    state=latest
+
+- name: Install sql-scripts
+  apt:
+    name=zabbix-sql-scripts
+    state=latest
+
+- name: Install zabbix-agent
+  apt:
+    name=zabbix-agent
+    state=latest

@@ -1,0 +1,6 @@
+---
+- name: filebeat systemd
+  systemd:
+    name: filebeat.service
+    enabled: yes
+    state: started

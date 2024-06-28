@@ -1,0 +1,12 @@
+---
+- hosts: 192.168.10.15
+  become:
+    true
+  become_method:
+    su
+  become_user:
+    root
+  remote_user:
+    diplom
+  roles:
+    - filebeat
