@@ -5,27 +5,45 @@
 
 - name: Install zabbix-server
   apt:
-    name=zabbix-server-mysql
-    state=latest
+    name:
+      - zabbix-server-mysql
+      - zabbix-frontend-php
+      - zabbix-apache-conf
+      - zabbix-sql-scripts
+      - zabbix-agent
+    state: latest
   notify:
     - zabbix-server systemd
 
-- name: Install frontend
-  apt:
-    name=zabbix-frontend-php
-    state=latest
+#- name: Install frontend
+#  apt:
+#    name=zabbix-frontend-php
+#    state=latest
 
-- name: Install apache
-  apt:
-    name=zabbix-apache-conf
-    state=latest
+#- name: Install apache
+#  apt:
+#    name=zabbix-apache-conf
+#    state=latest
 
-- name: Install sql-scripts
-  apt:
-    name=zabbix-sql-scripts
-    state=latest
+#- name: Install sql-scripts
+#  apt:
+#    name=zabbix-sql-scripts
+#    state=latest
 
-- name: Install zabbix-agent
-  apt:
-    name=zabbix-agent
-    state=latest
+#- name: Install zabbix-agent
+#  apt:
+#    name=zabbix-agent
+#    state=latest
+- name: DBPassword
+  lineinfile: dest=/etc/zabbix/zabbix_server.conf
+              regexp='^# DBPassword'
+              insertafter='# DBPassword'
+              line='DBPassword=zb_wd'
+              state=present
+
+- name: DBHost
+  lineinfile: dest=/etc/zabbix/zabbix_server.conf
+              regexp='^# DBHost'
+              insertafter='# DBHost'
+              line='DBHost=localhost'
+              state=present

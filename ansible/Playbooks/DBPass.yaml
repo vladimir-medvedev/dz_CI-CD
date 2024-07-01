@@ -16,3 +16,10 @@
                   insertafter='# DBPassword'
                   line='DBPassword=zb_wd'
                   state=present
+
+    - name: DBHost
+      lineinfile: dest=/etc/zabbix/zabbix_server.conf
+                  regexp='^# DBHost'
+                  insertafter='# DBHost'
+                  line='DBHost=localhost'
+                  state=present

@@ -1,0 +1,18 @@
+filter {
+  mutate { replace => { "type" => "error_log" } }
+  grok {
+
+    match => {
+        "message" => [
+            "(?<timestamp>\d{4}/\d{2}/\d{2} \d{2}:\d{2}:\d{2}) \[%{DATA:err_severity}\] (%{NUMBER:pid:int}#%{NUMBER}: \*%{NUM>
+            "%{DATESTAMP:timestamp} \[%{DATA:err_severity}\] %{GREEDYDATA:err_message}"
+        ]
+    }
+
+  }
+
+filter {
+  mutate {remove_field => [ "host" ]}
+  grok {
+    match => { "message" => "%{IPORHOST:remote_ip} - %{DATA:user_name}\[%{HTTPDATE:access_time}\] \"%{WORD:http_method} %{DAT>  }
+}

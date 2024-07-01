@@ -11,4 +11,4 @@
   roles:
     - nginx
     - zabbix-agent
-
+    - filebeat

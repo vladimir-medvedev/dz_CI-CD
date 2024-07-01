@@ -1,5 +1,5 @@
 ---
-- hosts: 192.168.10.15
+- hosts: web
   become:
     true
   become_method:
@@ -9,4 +9,4 @@
   remote_user:
     diplom
   roles:
-    - filebeat
+    - nginx

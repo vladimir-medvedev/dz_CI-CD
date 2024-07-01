@@ -1,5 +1,5 @@
 ---
-- hosts: 192.168.10.15
+- hosts: EL
   become:
     true
   become_method:
@@ -7,6 +7,6 @@
   become_user:
     root
   remote_user:
-    diplom
+    elastic
   roles:
-    - filebeat
+    - EL

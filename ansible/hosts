@@ -4,4 +4,10 @@ fhml5nkr8dalcr4kc6e0.auto.internal
 [zabbix]
 epdvh1jqc5ivb9b2cs3t.auto.internal
 
+[EL]
+epdah4rpb8pqqhteakqh.auto.internal
 
+[kibana]
+epdbbj9i2mvig09uam47.auto.internal
+#[all:vars]
+#ansible_python_interpreter = /usr/bin/python3

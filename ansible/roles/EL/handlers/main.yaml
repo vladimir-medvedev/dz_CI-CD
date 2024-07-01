@@ -1,0 +1,9 @@
+- name: restart elasticsearch
+  systemd:
+    name: elasticsearch.service
+    state: restarted
+
+- name: restart logstash
+  systemd:
+    name: logstash.service
+    state: restarted
