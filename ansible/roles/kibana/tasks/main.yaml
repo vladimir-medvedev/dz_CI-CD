@@ -1,5 +1,12 @@
 ---
+- name: Install Kibana
+  apt:
+    name=kibana
+    state=latest
+  notify:
+    - kibana systemd
+
 - name: kibana
-  template: src=/home/bastion/template/kibana.j2 dest=/etc/kibana/kibana.yml
+  copy: src=/etc/ansible/roles/kibana/files/kibana.yml dest=/etc/kibana/kibana.yml
   notify:
     - restart kibana

@@ -14,6 +14,6 @@
               state=present
 
 - name: index.html
-  template: src=/home/bastion/template/index.j2 dest=/var/www/html/index.html
+  copy: src=/etc/ansible/roles/nginx/files/index.html dest=/var/www/html/index.html
   notify:
     - restart nginx

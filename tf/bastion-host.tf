@@ -24,14 +24,9 @@ resource "yandex_compute_instance" "bastion-host" {
   }
 
   network_interface {
-    subnet_id      = yandex_vpc_subnet.bastion-external.id
+    subnet_id      = yandex_vpc_subnet.subnet-2.id
     nat            = true
     nat_ip_address = yandex_vpc_address.bastion_addr.external_ipv4_address[0].address
-  }
-
-  network_interface {
-    subnet_id = yandex_vpc_subnet.subnet-2.id
-    nat       = false
   }
 
   metadata = {

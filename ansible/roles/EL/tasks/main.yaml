@@ -1,17 +1,31 @@
 ---
+- name: Install Elastic
+  apt:
+    name=elasticsearch
+    state=latest
+  notify:
+    - elasticsearch systemd
+
+- name: Install Logstash
+  apt:
+    name=logstash
+    state=latest
+  notify:
+    - logstash systemd
+
 - name: elasticsearch
-  template: src=/home/bastion/template/elasticsearch.j2 dest=/etc/elasticsearch/elasticsearch.yml
+  copy: src=/etc/ansible/role/EL/files/elasticsearch.yml dest=/etc/elasticsearch/elasticsearch.yml
   notify:
     - restart elasticsearch
 
 - name: input
-  template: src=/home/bastion/template/input.j2 dest=/etc/logstash/conf.d/output.conf
+  copy: src=/etc/ansible/role/EL/files/input.yml dest=/etc/logstash/conf.d/output.conf
 
 - name: filter
-  template: src=/home/bastion/template/filter.j2 dest=/etc/logstash/conf.d/filter.conf
+  copy: src=/etc/ansible/role/EL/files/filter.yml dest=/etc/logstash/conf.d/filter.conf
 
 - name: output
-  template: src=/home/bastion/template/output.j2 dest=/etc/logstash/conf.d/output.conf
+  copy: src=/etc/ansible/role/EL/files/output.yml dest=/etc/logstash/conf.d/output.conf
   notify:
     - restart logstash
 

@@ -6,3 +6,7 @@
   notify:
     - filebeat systemd
 
+- name: filebeat.yml
+  copy: src=/etc/ansible/roles/filebeat/files/filebeat.yml dest=/etc/filebeat/filebeat.yml
+  notify:
+    - filebeat restarted

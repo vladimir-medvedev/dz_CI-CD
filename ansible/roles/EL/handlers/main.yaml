@@ -1,3 +1,15 @@
+- name: elasticsearch systemd
+  systemd:
+    name: elasticsearch
+    enabled: yes
+    state: started
+
+- name: logstash systemd
+  systemd:
+    name: logstash
+    enabled: yes
+    state: started
+
 - name: restart elasticsearch
   systemd:
     name: elasticsearch.service

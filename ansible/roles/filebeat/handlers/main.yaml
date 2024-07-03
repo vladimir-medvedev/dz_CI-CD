@@ -4,3 +4,8 @@
     name: filebeat.service
     enabled: yes
     state: started
+
+- name: filebeat restarted
+  systemd:
+    name: filebeat.service
+    state: restarted

@@ -19,6 +19,7 @@ resource "yandex_compute_instance" "elasticsearch" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet-2.id
     nat       = false
+    security_group_ids = [yandex_vpc_security_group.ELK.id]
   }
 
   metadata = {
@@ -50,6 +51,7 @@ resource "yandex_compute_instance" "kibana" {
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet-2.id
     nat       = true
+    security_group_ids = [yandex_vpc_security_group.ELK.id]
   }
 
   metadata = {
