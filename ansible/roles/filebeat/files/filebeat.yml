@@ -17,10 +17,12 @@ filebeat.inputs:
   fields_under_root: true
   scan_frequency: 5s
 
-output.logstash:
-  hosts: ["192.168.20.13:5044"]
 
-xpack.monitoring:
+output.elasticsearch:
+  hosts: ["http://192.168.20.13:9200"]
+
+setup.kibana.host: "http://192.168.20.39:5601"
+filebeat.config.modules:
   enabled: true
-  elasticsearch:
-    hosts: ["http://192.168.20.13:9200"]
+  path: /etc/filebeat/modules.d/*.yml
+
