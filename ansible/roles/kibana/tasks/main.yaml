@@ -1,4 +1,13 @@
 ---
+- name: Add Elastic repo
+  apt_repository:
+    repo: 'deb [trusted=yes] https://mirror.yandex.ru/mirrors/elastic/7/ stable main'
+    state: present
+
+- name: Update cache
+  apt:
+   update_cache: yes
+
 - name: Install Kibana
   apt:
     name=kibana

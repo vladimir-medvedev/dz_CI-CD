@@ -1,13 +1,12 @@
 [web]
-epdvi373dceos58atesp.auto.internal
-fhml5nkr8dalcr4kc6e0.auto.internal
+web-1 ansible_host=192.168.10.15
+web-2 ansible_host=192.168.20.9
 [zabbix]
-epdvh1jqc5ivb9b2cs3t.auto.internal
-
+zabbix ansible_host=192.168.30.21
 [EL]
-epdah4rpb8pqqhteakqh.auto.internal
-
+elasticsearch ansible_host=192.168.20.21
 [kibana]
-epdbbj9i2mvig09uam47.auto.internal
+kibana ansible_host=192.168.30.9
 #[all:vars]
 #ansible_python_interpreter = /usr/bin/python3
+

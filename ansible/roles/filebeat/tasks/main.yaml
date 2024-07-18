@@ -1,10 +1,22 @@
 ---
+- name: Add Elastic repo
+  apt_repository:
+    repo: 'deb [trusted=yes] https://mirror.yandex.ru/mirrors/elastic/7/ stable main'
+    state: present
+
+- name: Update cache
+  apt:
+   update_cache: yes
+
 - name: Install filebeat
   apt:
     name=filebeat
     state=latest
   notify:
     - filebeat systemd
+
+- name: Enable Nginx for Filebeat
+  command: filebeat modules enable nginx
 
 - name: filebeat.yml
   copy: src=/etc/ansible/roles/filebeat/files/filebeat.yml dest=/etc/filebeat/filebeat.yml

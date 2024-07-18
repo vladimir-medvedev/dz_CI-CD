@@ -11,18 +11,20 @@ resource "yandex_compute_instance" "zabbix" {
 
   boot_disk {
     initialize_params {
-      image_id = "fd8a28k7fnc9u68s45g5"
+      image_id = "fd8ncabquaiv1n49h9in"
       size = 10
     }
   }
 
   network_interface {
-    subnet_id = yandex_vpc_subnet.subnet-2.id
+    subnet_id = yandex_vpc_subnet.bastion-external.id
     nat       = true
+    ip_address = "192.168.30.21"
+    security_group_ids = [yandex_vpc_security_group.zabbix.id]
   }
 
   metadata = {
-    user-data = "${file("./meta1.txt")}"
+    user-data = "${file("./meta.txt")}"
   }
   scheduling_policy {
     preemptible = true

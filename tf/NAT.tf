@@ -19,7 +19,6 @@ resource "yandex_vpc_subnet" "bastion-external" {
   v4_cidr_blocks = ["192.168.30.0/24"]
   zone           = "ru-central1-b"
   network_id     = yandex_vpc_network.lan1.id
-  route_table_id = yandex_vpc_route_table.rt.id
 }
 
 resource "yandex_vpc_gateway" "nat-gateway" {

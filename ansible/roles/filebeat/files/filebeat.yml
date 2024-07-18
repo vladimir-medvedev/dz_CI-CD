@@ -2,7 +2,7 @@ filebeat.inputs:
 - type: log
   enabled: true
   paths:
-      - /var/log/nginx/*-access.log
+      - /var/log/nginx/*access.log
   fields:
     type: nginx_access
   fields_under_root: true
@@ -11,7 +11,7 @@ filebeat.inputs:
 - type: log
   enabled: true
   paths:
-      - /var/log/nginx/*-error.log
+      - /var/log/nginx/*error.log
   fields:
     type: nginx_error
   fields_under_root: true
@@ -19,9 +19,9 @@ filebeat.inputs:
 
 
 output.elasticsearch:
-  hosts: ["http://192.168.20.13:9200"]
+  hosts: ["http://192.168.20.21:9200"]
 
-setup.kibana.host: "http://192.168.20.39:5601"
+setup.kibana.host: "http://192.168.30.9:5601"
 filebeat.config.modules:
   enabled: true
   path: /etc/filebeat/modules.d/*.yml

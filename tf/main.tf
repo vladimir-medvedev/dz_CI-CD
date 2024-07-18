@@ -9,7 +9,6 @@ terraform {
 
 provider "yandex" {
   token     = var.yandex_cloud_token
-  #token     = "y0_AgAAAAA7bTP_AATuwQAAAADwuzxL4YksizVKRMGzhNCijZ2cyUZKKYI"
   cloud_id  = "P9-PFNhiz9b4STN6tpvA"
   folder_id = "b1gsorovfokba2962964"
   zone      = "ru-central1-a"
@@ -32,7 +31,7 @@ resource "yandex_compute_instance" "web-1" {
 
   boot_disk {
     initialize_params {
-      image_id = "fd8a28k7fnc9u68s45g5"
+      image_id = "fd8ncabquaiv1n49h9in"
       size = 10
     }
   }
@@ -65,7 +64,7 @@ resource "yandex_compute_instance" "web-2" {
 
   boot_disk {
     initialize_params {
-      image_id = "fd8a28k7fnc9u68s45g5"
+      image_id = "fd8ncabquaiv1n49h9in"
       size = 10
     }
   }

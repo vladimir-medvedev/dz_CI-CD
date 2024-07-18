@@ -1,4 +1,14 @@
 ---
+- name: Add Elastic repo
+  apt_repository:
+    repo: 'deb [trusted=yes] https://mirror.yandex.ru/mirrors/elastic/7/ stable main'
+    state: present
+
+- name: Update cache
+  apt:
+   update_cache: yes
+
+
 - name: Install Elastic
   apt:
     name=elasticsearch
@@ -6,27 +16,9 @@
   notify:
     - elasticsearch systemd
 
-- name: Install Logstash
-  apt:
-    name=logstash
-    state=latest
-  notify:
-    - logstash systemd
-
 - name: elasticsearch
-  copy: src=/etc/ansible/role/EL/files/elasticsearch.yml dest=/etc/elasticsearch/elasticsearch.yml
+  copy: src=/etc/ansible/roles/EL/files/elasticsearch.yml dest=/etc/elasticsearch/elasticsearch.yml
   notify:
     - restart elasticsearch
-
-- name: input
-  copy: src=/etc/ansible/role/EL/files/input.yml dest=/etc/logstash/conf.d/output.conf
-
-- name: filter
-  copy: src=/etc/ansible/role/EL/files/filter.yml dest=/etc/logstash/conf.d/filter.conf
-
-- name: output
-  copy: src=/etc/ansible/role/EL/files/output.yml dest=/etc/logstash/conf.d/output.conf
-  notify:
-    - restart logstash
 
 

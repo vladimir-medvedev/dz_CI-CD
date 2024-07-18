@@ -27,7 +27,7 @@ resource "yandex_vpc_security_group" "external-sg" {
   }
 }  
 
-resource yandex_vpc_security_group web {
+resource "yandex_vpc_security_group" web {
   name        = "web"
   description = "web"
   network_id  = yandex_vpc_network.lan1.id
@@ -57,13 +57,7 @@ resource yandex_vpc_security_group web {
     port           = 10050
     v4_cidr_blocks = ["0.0.0.0/0"]
   }
-  ingress {
-    description    = "Allow Filebeat"
-    protocol       = "TCP"
-    port           = 5044
-    v4_cidr_blocks = ["0.0.0.0/0"]
-  }
-  
+    
   egress {
     description    = "Permit ANY"
     protocol       = "ANY"
@@ -71,7 +65,7 @@ resource yandex_vpc_security_group web {
   }
 }
 
-resource yandex_vpc_security_group zabbix {
+resource "yandex_vpc_security_group" zabbix {
   name        = "zabbix"
   description = "zabbix"
   network_id  = yandex_vpc_network.lan1.id
@@ -109,7 +103,7 @@ resource yandex_vpc_security_group zabbix {
   }
 }
 
-resource yandex_vpc_security_group ELK {
+resource "yandex_vpc_security_group" EK {
   name        = "ELK"
   description = "ELK"
   network_id  = yandex_vpc_network.lan1.id
@@ -145,13 +139,13 @@ resource yandex_vpc_security_group ELK {
     port           = 5601
     v4_cidr_blocks = ["0.0.0.0/0"]
   }
+  
   ingress {
     description    = "Allow Filebeat"
     protocol       = "TCP"
     port           = 5044
     v4_cidr_blocks = ["0.0.0.0/0"]
   }
-  
   egress {
     description    = "Permit ANY"
     protocol       = "ANY"

@@ -3,3 +3,8 @@
     name: zabbix-server
     enabled: yes
     state: started
+
+- name: zabbix-server restarted
+  systemd:
+    name: zabbix-server
+    state: restarted

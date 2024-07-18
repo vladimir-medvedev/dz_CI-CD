@@ -7,6 +7,6 @@
   become_user:
     root
   remote_user:
-    kibana
+    diplom
   roles:
     - kibana

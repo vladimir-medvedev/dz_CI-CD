@@ -1,4 +1,15 @@
 ---
+- name: Zabbix repo
+  command: wget https://repo.zabbix.com/zabbix/6.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.4-1+ubuntu22.04_all.deb
+
+- name: Install Zabbix deb
+  apt:
+    deb: zabbix-release_6.4-1+ubuntu22.04_all.deb
+
+- name: Update
+  apt:
+    update_cache: yes
+
 - name: Install zabbix-agent
   apt:
     name=zabbix-agent
@@ -6,26 +17,32 @@
   notify:
     - zabbix-agent systemd
 
-- name: za-server
-  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf
-              regexp='^Server=127'
-              insertafter='# Server'
-              line='Server=192.168.20.21'
+- name: zabbix-agent
+  copy: src=/etc/ansible/roles/zabbix-agent/files/zabbix_agentd.conf dest=/etc/zabbix/zabbix_agentd.conf
+  notify:
+    - zabbix-agent restart
 
-- name: BufferSend
-  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf
-              regexp='^# BufferSend'
-              insertafter='# BufferSend'
-              line='BufferSend=10'
 
-- name: BufferSize
-  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf
-              regexp='^# BufferSize'
-              insertafter='# BufferSize'
-              line='BufferSize=1000'
+#- name: za-server
+#  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf
+#              regexp='^Server=127'
+#              insertafter='# Server'
+#              line='Server=192.168.30.21'
 
-- name: AllowRoot
-  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf
-              regexp='^# AllowRoot'
-              insertafter='# AllowRoot'
-              line='AllowRoot=1'
+#- name: BufferSend
+#  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf
+#              regexp='^# BufferSend'
+#              insertafter='# BufferSend'
+#              line='BufferSend=10'
+
+#- name: BufferSize
+#  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf
+#              regexp='^# BufferSize'
+#              insertafter='# BufferSize'
+#              line='BufferSize=1000'
+
+#- name: AllowRoot
+#  lineinfile: dest=/etc/zabbix/zabbix_agentd.conf
+#              regexp='^# AllowRoot'
+#              insertafter='# AllowRoot'
+#              line='AllowRoot=1'

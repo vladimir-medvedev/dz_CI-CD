@@ -28,48 +28,40 @@
     login_user: root
     login_password: 123456
     login_host: zabbix
-    name: zabbix_db
+    name: zabbix
     state: present
     login_unix_socket: /run/mysqld/mysqld.sock
 
 - name: Create User
   community.mysql.mysql_user:
-    login_user: root
-    login_password: 123456
     login_host: zabbix
     name: zabbix
-    password: zb_wd
+    password: '{{mysql_password}}'
     priv: '*.*:ALL,GRANT'
     state: present
     login_unix_socket: /run/mysqld/mysqld.sock
 
 - name: grant zabbix.
   community.mysql.mysql_query:
-    login_user: root
-    login_password: 123456
     login_host: zabbix
     login_db: zabbix
     query:
     - grant all privileges on zabbix.* to zabbix@localhost
     - set global log_bin_trust_function_creators = 1
     login_unix_socket: /run/mysqld/mysqld.sock
+- name: DBPassword
+  lineinfile: dest=/etc/zabbix/zabbix_server.conf
+              regexp='^# DBPassword'
+              insertafter='# DBPassword'
+              line='DBPassword=zb_wd'
+              state=present
 
-- name: Zabbix-server_conf
-  copy: src=/etc/ansible/roles/zabbix-server/files/zabbix_server.conf dest=/etc/zabbix/zabbix_server.conf
+- name: DBHost
+  lineinfile: dest=/etc/zabbix/zabbix_server.conf
+              regexp='^# DBHost'
+              insertafter='# DBHost'
+              line='DBHost=localhost'
+              state=present
+
   notify:
     - zabbix-server restarted
-
-#- name: DBPassword
-#  lineinfile: dest=/etc/zabbix/zabbix_server.conf
-#              regexp='^# DBPassword'
-#              insertafter='# DBPassword'
-#              line='DBPassword=zb_wd'
-#              state=present
-
-#- name: DBHost
-#  lineinfile: dest=/etc/zabbix/zabbix_server.conf
-#              regexp='^# DBHost'
-#              insertafter='# DBHost'
-#              line='DBHost=localhost'
-#              state=present
-
